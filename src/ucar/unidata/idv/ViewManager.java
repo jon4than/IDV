@@ -1118,6 +1118,7 @@ public class ViewManager extends SharableImpl implements ActionListener,
         }
 
         // Create it if we need to
+        if (getShowSideLegend()) {
         if (sideLegend == null) {
             sideLegend = new SideLegend(this);
             addRemovable(sideLegend);
@@ -1167,6 +1168,11 @@ public class ViewManager extends SharableImpl implements ActionListener,
         fullContents       = GuiUtils.leftCenter(leftNav, centerPanelWrapper);
         fullContents.setBorder(getContentsBorder());
         insertSideLegend();
+        } else {
+            centerPanelWrapper = GuiUtils.center(centerPanel);
+            fullContents       = GuiUtils.leftCenter(leftNav, centerPanelWrapper);
+            fullContents.setBorder(getContentsBorder());
+        }
         fillLegends();
 
     }
